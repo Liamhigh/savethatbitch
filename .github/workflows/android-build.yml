@@ -1,0 +1,46 @@
+name: Build Android APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Make Gradle executable
+        run: |
+          chmod +x ./gradlew || true
+          chmod +x android/gradlew || true
+
+      - name: Build APK
+        run: |
+          if [ -f ./gradlew ]; then
+            ./gradlew assembleDebug
+          elif [ -f android/gradlew ]; then
+            cd android
+            ./gradlew assembleDebug
+            cd ..
+          else
+            echo "No gradlew found"
+            ls
+            exit 1
+          fi
+
+      - name: Upload debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: savethatbitch-debug-apk
+          path: "**/build/outputs/apk/**/*.apk"
