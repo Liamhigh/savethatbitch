@@ -24,9 +24,10 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy to Firebase Hosting
+      - name: Deploy
         uses: w9jds/firebase-action@v14.25.0
         with:
           args: deploy --only hosting
         env:
           GCP_SA_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          PROJECT_ID: verum-omnis-v2
