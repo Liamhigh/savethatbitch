@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verum Omnis - Forensic Engine</title>
+    <style>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #0a0a0a;
+            color: #d1d1d1;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            padding: 24px;
+            box-sizing: border-box;
+            min-height: 100vh;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 12px;
+            }
+        }
+        #root {
+            width: 100%;
+            max-width: 800px;
+        }
+        /* Custom styles for company logo */
+        .company-logo {
+            position: fixed;
+            top: 24px;
+            left: 24px;
+            max-height: 50px;
+            max-width: 180px;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.5);
+            padding: 5px;
+            border-radius: 4px;
+            backdrop-filter: blur(2px);
+        }
+
+        @media (max-width: 850px) {
+            /* Hide the logo on smaller screens to avoid overlapping the title */
+            .company-logo {
+                display: none;
+            }
+        }
+        /* Style for markdown content */
+        .result-content h1, .result-content h2, .result-content h3 {
+            margin-top: 24px;
+            margin-bottom: 16px;
+            line-height: 1.25;
+            color: #e0e0e0;
+        }
+        .result-content h1 { border-bottom: 2px solid #3a3a3a; padding-bottom: 8px; }
+        .result-content h2 { border-bottom: 1px solid #2a2a2a; padding-bottom: 6px; }
+        .result-content p {
+            margin-bottom: 16px;
+        }
+        .result-content ul, .result-content ol {
+            padding-left: 2em;
+        }
+        .result-content code {
+            background-color: #252525;
+            padding: .2em .4em;
+            margin: 0;
+            font-size: 85%;
+            border-radius: 6px;
+        }
+        .result-content pre {
+            background-color: #252525;
+            padding: 16px;
+            overflow: auto;
+            border-radius: 6px;
+        }
+        .result-content pre code {
+            padding: 0;
+            margin: 0;
+            font-size: 100%;
+            background: none;
+        }
+        .result-content blockquote {
+            border-left: 3px solid #444;
+            padding-left: 1em;
+            margin-left: 0;
+            color: #b0b0b0;
+        }
+        .result-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 16px;
+        }
+        .result-content th, .result-content td {
+            border: 1px solid #3a3a3a;
+            padding: 8px;
+            text-align: left;
+        }
+        .result-content th {
+            background-color: #252525;
+        }
+        /* Custom slider styles */
+        .brightness-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 120px;
+            height: 5px;
+            background: #444;
+            border-radius: 5px;
+            outline: none;
+            opacity: 0.9;
+            transition: opacity .2s;
+            cursor: pointer;
+            vertical-align: middle;
+        }
+        .brightness-slider:hover {
+            opacity: 1;
+        }
+        .brightness-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #a0a0a0;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color .2s;
+        }
+        .brightness-slider::-webkit-slider-thumb:hover {
+            background: #c0c0c0;
+        }
+        .brightness-slider::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            background: #a0a0a0;
+            border-radius: 50%;
+            cursor: pointer;
+            border: none;
+            transition: background-color .2s;
+        }
+        .brightness-slider::-moz-range-thumb:hover {
+            background: #c0c0c0;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="capacitor.js"></script>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.1",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "vite": "https://aistudiocdn.com/vite@^7.2.2",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.1.1"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="/src/index.tsx"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
