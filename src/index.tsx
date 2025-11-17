@@ -203,7 +203,15 @@ Analyze the following documents and images with extreme prejudice and deliver yo
         <>
             {logoSrc && <img src={logoSrc} className="company-logo" alt="Company Logo" />}
             <div style={styles.container} aria-live="polite" aria-busy={loading}>
-                <h1 style={styles.title}>Verum Omnis - Forensic Engine</h1>
+                <h1 style={styles.title}>Verum Omnis – The First Forensic AI Engine</h1>
+                <p style={styles.subtitle}>
+                    Welcome to Verum Omnis. This engine reads your documents like a forensic analyst –
+                    surfacing contradictions, lies, missing pieces, and next legal steps while you stay in control.
+                </p>
+                <p style={styles.helperText}>
+                    • Free for private individuals · Institutions pay only on successful recovery.<br />
+                    • Your report will appear <span style={styles.helperTextEmphasis}>below this form</span> when it finishes – the page does not redirect.
+                </p>
                 
                 <div style={{...styles.inputSection, opacity: isOffline ? 0.7 : 1, transition: 'opacity 0.3s ease-in-out'}}>
                     {isOffline && (
@@ -231,6 +239,9 @@ Analyze the following documents and images with extreme prejudice and deliver yo
                             </button>
                         )}
                     </div>
+                    <p style={styles.helperTextLogo}>
+                        Optional. You can skip this for now – it doesn’t affect the forensic report.
+                    </p>
 
                     <label htmlFor="prompt-textarea" style={styles.label}>Case Name / Primary Question</label>
                     <textarea
@@ -244,6 +255,9 @@ Analyze the following documents and images with extreme prejudice and deliver yo
                     />
                     
                     <label htmlFor="file-upload" style={styles.label}>Upload Evidence</label>
+                    <p style={styles.helperTextLogo}>
+                        Tip: start with your earliest documents so the engine can build a clean timeline.
+                    </p>
                     <div style={styles.fileInputContainer}>
                          <label htmlFor="file-upload" style={{...styles.fileInputLabel, cursor: loading ? 'not-allowed' : 'pointer', opacity: loading ? 0.5 : 1}}>
                             Add Files...
@@ -338,6 +352,10 @@ Analyze the following documents and images with extreme prejudice and deliver yo
 const styles: { [key: string]: React.CSSProperties } = {
     container: { width: '100%', display: 'flex', flexDirection: 'column', gap: '24px' },
     title: { fontSize: 'clamp(1.75rem, 5vw, 2.25rem)', textAlign: 'center', margin: 0, color: '#e0e0e0' },
+    subtitle: { fontSize: '0.9rem', textAlign: 'center', margin: 0, color: '#b0b0b0', maxWidth: '720px', marginInline: 'auto', lineHeight: 1.5 },
+    helperText: { fontSize: '0.75rem', textAlign: 'center', marginTop: '0.25rem', marginBottom: '1.5rem', color: '#9a9a9a', maxWidth: '720px', marginInline: 'auto', lineHeight: 1.5 },
+    helperTextEmphasis: { fontWeight: 600, color: '#e0e0e0' },
+    helperTextLogo: { fontSize: '0.75rem', color: '#9a9a9a', marginTop: '0.25rem', marginBottom: '0.75rem' },
     inputSection: { backgroundColor: '#1c1c1c', padding: '20px', borderRadius: '12px', border: '1px solid #2a2a2a', display: 'flex', flexDirection: 'column', gap: '16px' },
     offlineBanner: { backgroundColor: '#4a2c2c', color: '#ffc1c1', padding: '12px', borderRadius: '4px', border: '1px solid #8b0000', textAlign: 'center', fontSize: '0.9rem' },
     label: { fontWeight: 500, fontSize: '0.9rem', color: '#a0a0a0' },
