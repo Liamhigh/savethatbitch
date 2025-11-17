@@ -90,8 +90,9 @@ const App = () => {
         setError('');
 
         try {
-            // FIX: Per coding guidelines, the API key must be obtained from `process.env.API_KEY`. This also resolves the TypeScript error.
-            const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// @ts-ignore
+            // FIX: Per coding guidelines, the API key must be obtained from `import.meta.env.VITE_API_KEY`. This also resolves the TypeScript error.
+            const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_API_KEY });
             
             const isComplex = (useThinkingMode || hasPdfFile) && !hasImageFile;
             const modelName = hasImageFile ? 'gemini-2.5-flash' : (isComplex ? 'gemini-2.5-pro' : 'gemini-2.5-flash');
